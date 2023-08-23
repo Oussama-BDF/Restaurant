@@ -1,0 +1,18 @@
+RewriteEngine On
+RewriteBase /restaurant/
+
+# SIGNIN
+# Redirect /restaurant/admin/pages/auth/signin.php to /restaurant/admin/signin.php
+RewriteRule ^admin/signin\.php$ admin/pages/auth/signin.php [L]
+
+# SIGNUP
+# Redirect /restaurant/admin/pages/auth/signup.php to /restaurant/admin/signup.php
+RewriteRule ^admin/signup\.php$ admin/pages/auth/signup.php [L]
+
+# HOME
+# Redirect /restaurant/admin/pages/home.php to /restaurant/admin/home.php
+RewriteRule ^admin/home\.php$ admin/pages/home.php [L]
+
+# CHANGE PASSWORD
+# Redirect /restaurant/admin/pages/auth/changePass.php to /restaurant/admin/changePass.php
+RewriteRule ^admin/changePass\.php$ admin/pages/auth/changePass.php [L]

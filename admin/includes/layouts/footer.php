@@ -1,0 +1,4 @@
+
+<footer>
+    <!-- hello footer -->
+</footer>
