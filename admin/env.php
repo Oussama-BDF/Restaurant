@@ -2,23 +2,25 @@
     /*Fichier Environement */
     // Routes
 
-    $BASE_URL = "/restaurant/admin/";
+    $BASE_URL = "/MyRestaurant/admin/";
 
     $pages = "pages/";
-
-    $server = "server/";
 
     $layout = "includes/layouts/";
 
     $str = "includes/strings/";
 
-    $fnc = "includes/backend/";
+    $user = "backend/user/";
+
+    $prod = "backend/products/";
+
+    $cmp = "includes/components/";
 
     $css = "assets/scss/";
 
     //exits folder
 
-    $exitAuth = "/../../";
+    $exitProd = $exitAuth = "/../../";
 
     $exitPage = "/../";
 

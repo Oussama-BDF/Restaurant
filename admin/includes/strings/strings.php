@@ -66,6 +66,12 @@
                     "anchor" => "HOME"
                 ]
             ],
+            "foods" => [                
+                "title" => "MANAGE FOODS"
+            ],
+            "ingredients" => [                
+                "title" => "MANAGE INGREDIENTS"
+            ],
             "msgErr" => [
                 "required"=>  " is required",
                 "match" => "The confirmation password  does not match",

@@ -1,0 +1,1 @@
+<?php showProducts("foods", "food_categ_id") ?>

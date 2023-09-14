@@ -1,0 +1,422 @@
+/* **********************************************The Section of displaying Categories**************************************** */
+.showCategories{
+    min-height: 100vh;
+    background-color: var(--smoky-black-2);
+    padding-block: 120px 71px;
+}
+
+.showCategories .container{
+    width: 75%;
+    margin-inline: auto;
+}
+
+.showCategories .row{
+    width: 100%;
+}
+
+/* ****************The Top Buttons*************** */
+.showCategories .buttons{
+    justify-content: space-between;
+}
+
+.showCategories .btn{
+    margin-inline: 30px;
+}
+
+/* *****************The Categories******************* */
+.showCategories .row .category{
+    background:  no-repeat center;
+    background-size: cover;
+    text-align: center;
+    width: calc(33.33% - 60px);
+    /* width: 100%; */
+    height: 450px;
+    margin: 30px;
+    outline: 1px solid var(--gold-crayola);
+    border-radius: var(--radius-1);
+    position: relative;
+}
+
+.showCategories .row .category:hover{
+    outline-width: 2px;
+}
+
+/* ****************The Categories Contents**************** */
+.showCategories .categoryName{
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+}
+
+.showCategories .smallBtn{
+    position: absolute;
+    display: none;
+    right: 20px;
+}
+
+.showCategories .smallBtn.remove{
+    top: 20px;
+}
+
+.showCategories .smallBtn.update{
+    top: 80px;
+}
+
+.showCategories .smallBtn.prod{
+    top: 140px;
+}
+
+.showCategories .category:hover .smallBtn{
+    display: block;
+}
+
+/* ***********The Contents of the prod button************ */
+.showCategories .prod .select{
+    /* width: 110px; */
+    width: 88px;
+    left: calc(50% - 44px);
+    position: absolute;
+    padding: 7px;
+    background: black;
+    color: var(--gold-crayola);
+    font-weight: bold;
+    border: var(--border-2);
+    display: none;
+    cursor: pointer;
+}
+
+.showCategories .prod .select1{
+    bottom: -48px;
+    border-radius: 10px 10px 0 0;
+}
+
+.showCategories .prod .select2{
+    bottom: -94px;
+    border-radius: 0 0 10px 10px;
+}
+
+.showCategories .category .prod::after{
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 10px);
+    border-block-end: 10px solid var(--gold-crayola);
+    border-inline: 10px solid transparent;
+    display: none;
+}
+
+.showCategories .category .block::after{
+    display: block;
+}
+
+.showCategories .prod .select:hover{
+    background-color: var(--smoky-black-2);
+}
+
+/* **********************************************The Section of adding and updatign an Item**************************************** */
+.blockOtherElements{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.74);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    display: none;
+}
+
+.blockOtherElements .container{
+    width: calc(100% - 500px);
+    height: calc(100vh - 70px);
+    margin: 35px auto;
+    background-color: var(--smoky-black-2);
+    border-radius: var(--radius-1);
+    border: var(--border-2);
+}
+
+.addCategory .container,
+.updCategory .container,
+.addProd .container,
+.message .container{
+	justify-content: center;
+	align-items: center;
+}
+
+.blockOtherElements .container.msg{
+    flex-direction: column;
+    font-size: 25px;
+}
+
+.blockOtherElements .form {
+	width: 50%;
+	padding: 30px;
+	border: var(--border-2);
+    border-radius: var(--radius-1);
+}
+
+/* *************The Contents Of The Form***************** */
+.blockOtherElements .title {
+	text-align: center;
+	margin-block: 20px;
+	color: var(--gold-crayola);
+}
+
+.blockOtherElements .Inpt {
+    background: transparent;
+	display: block;
+	border: var(--border-2);
+    /* width: -webkit-fill-available; */
+    width: calc(100% - 20px);
+    padding: 10px;
+	margin: 10px;
+	border-radius: var(--radius-1);
+	color: var(--white);
+}
+
+/* ********File Input********* */
+.blockOtherElements .Inpt.imgInpt {
+    text-align: center;
+    background: url("../img/footer-form-bg1.png") no-repeat center;
+    background-size: cover;
+}
+
+.blockOtherElements .imgContainer{
+    display: inline-block;
+    height: 160px;
+    width: 30%;
+    background: no-repeat center;
+    background-size: cover;
+    border: 1px solid var(--gold-crayola);
+    border-radius: var(--radius-1);
+}
+
+.fileInpt[type="file"] {
+    position: relative;
+    width: 35%;
+    padding-block: 5px;
+}
+
+.fileInpt[type="file"]:after {
+    content: attr(data-content);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(100%);
+    height: 100%;
+    font-size: 15px;
+    line-height: 2;
+    background-color: #e4c590;
+    color: black;
+    border-radius: var(--radius-1);
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.fileInpt[type="file"]:hover::after{
+    background-color: #a48e68;
+}
+
+/* ***************Buttons************** */
+.addCategory .smallBtn,
+.updCategory .smallBtn,
+.addProd .smallBtn{
+	float: right;
+	margin-right: 10px;
+}
+
+.addCategory .smallBtn:hover,
+.updCategory .smallBtn:hover,
+.addProd .smallBtn:hover{
+	opacity: .7;
+}
+
+.blockOtherElements .anchr {
+	color: var(--gold-crayola);
+}
+
+
+/* *********************************************the section of displaying the products************************************* */
+
+.showProducts .container{
+    overflow-y: scroll;
+    padding: 45px;
+}
+
+/* *******************The Top Buttons********************** */
+
+.showProducts .buttons{
+    justify-content: space-between;
+}
+
+.showProducts .btn{
+    margin: 0px 30px;
+}
+
+/* ********************The Products************************ */
+
+.showProducts .prod{
+    width: calc(33.33% - 60px);
+    height: 290px;
+    margin: 30px;
+    outline: 1px solid var(--gold-crayola);
+    border-radius: var(--radius-1);
+    position: relative;
+}
+
+.showProducts .prod.foods{
+    height: 429px;
+}
+
+.showProducts .prod:hover{
+    outline-width: 2px;
+}
+
+/* ********************The Products Contents****************** */
+.showProducts .prodImg{
+    width: 85%;
+    height: 69%;
+    background: no-repeat center;
+    background-size: cover;
+    border: var(--border-2);
+    border-radius: var(--radius-1);
+    margin: 7.5% auto;
+    position: relative;
+}
+
+.showProducts .prodImg.foodImg{
+    height: 45%;
+}
+
+.showProducts .prodName{
+    display: block;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 7.5%;
+    white-space: normal;
+}
+
+.showProducts .prodPrice{
+    display: block;
+    color: var(--gold-crayola);
+    font-weight: bold;
+    font-size: 25px;
+    margin: 7.5%;
+    white-space: normal;
+}
+
+.showProducts .description{
+    display: block;
+    color: #7c7c7c;
+    white-space: normal;
+    margin: 7.5%;
+}
+
+.showProducts .smallBtn{
+    min-width: 100px;
+    position: absolute;
+    display: none;
+    bottom: 6%;
+}
+
+.showProducts .remove{
+    right: 4%;
+}
+
+.showProducts .update{
+    left: 4%;
+}
+
+.showProducts .prod:hover .remove,
+.showProducts .prod:hover .update{
+    display: block;
+}
+
+.addProd .column{
+    width: 100%;
+}
+
+.addProd .imgContainer2{
+    width: 67%;
+}
+
+.addProd .fileInpt2{
+    width: 72%;
+}
+
+.addProd .imgInpt{
+    height: 219px;
+}
+
+.addProd .category{
+    background-color: var(--gold-crayola);
+    color: black;
+    padding: 5px;
+    margin: 8px;
+    width: 72%;
+    border-radius: var(--radius-1);
+    border: 1px solid gray;
+    font-size: 14px;
+}
+
+.addProd .categoryTest{
+    display: inline-block;
+    text-align: start;
+    background-color: var(--gold-crayola);
+    color: black;
+    padding: 5px;
+    margin: 8px;
+    width: 72%;
+    border-radius: var(--radius-1);
+    border: 1px solid gray;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="radio"]{
+    accent-color: black;
+}
+
+.addProd .ingredient{
+    border: 1px solid gray;
+}
+
+.addProd .mard{
+    position: relative;
+}
+
+.addProd .containerTest{
+    background-color: var(--gold-crayola);
+    width: 150px;
+    position: absolute;
+    top: -8px;
+    left: calc(50% - 75px);
+    z-index: 10;
+    display: none;
+    text-align: start;
+    color: black;
+}
+
+.addProd .containerTest:hover{
+    display: block;
+}
+
+input[type="checkbox"]{
+    accent-color: black;
+}
+
+.container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+
+
+
+
+

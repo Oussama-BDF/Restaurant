@@ -2,7 +2,7 @@
     $server = "localhost";
     $user = "root";
     $psswd = "password";
-    $db = "restaurant";
+    $db = "myRestaurant";
 
     $conn = mysqli_connect($server, $user, $psswd, $db);
     if(!$conn){

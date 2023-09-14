@@ -1,19 +1,17 @@
 <?php 
     /*******************************************AUTH FUNCTIONS************************************** */
 
-    function hashing($field){
-        if ($field == "password")
-            $_POST[$field] = md5($_POST[$field]);
-    }
-
+    include  __DIR__ . "/../database/dbFunctions.php";
+	include  __DIR__ . "/../validateFunctions.php";
 
     function signIn(){
         global $siteTexts;
         if (isset($_POST['email']) && isset($_POST['password'])) {
             if (!($errorMsgs = isEmpty())){
-                if (!select("email")){
+                $_POST["password"] = md5($_POST["password"]); //Hashing the password
+                if (!select("admins", "email")){
                     $errorMsgs["email"] = $siteTexts["msgErr"]['notAssociated'];
-                } else if (($row = select("email", "password"))) {
+                } else if (($row = select("admins", "email", "password"))) {
                     $_SESSION['email'] = $row['email'];
                     $_SESSION['name'] = $row['name'];
                     $_SESSION['id'] = $row['id'];
@@ -31,10 +29,11 @@
         global $siteTexts;
         if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name']) && isset($_POST['re_password'])) {
             if (!($errorMsgs = isEmpty()) && !($errorMsgs["re_password"] = isMatch("password", "re_password"))){
-                if (select("email")){
+                $_POST["password"] = md5($_POST["password"]); //Hashing the password
+                if (select("admins", "email")){
                     $errorMsgs["email"] = $siteTexts["msgErr"]['isTaken'];
                 }else {
-                    if (insert("email", "password", "name")) {
+                    if (insert("admins", "email", "password", "name")) {
                         header("Location: ". $BASE_URL . "signup.php?success=Your account has been created successfully");
                         exit();
                     }
@@ -56,12 +55,11 @@
         global $siteTexts;
         if (isset($_POST['op']) && isset($_POST['np']) && isset($_POST['c_np'])) {
             if (!($errorMsgs = isEmpty()) && !($errorMsgs["c_np"] = isMatch("np", "c_np"))){
-                $_POST['password'] = $_POST['op'];
+                $_POST['password'] = md5($_POST["op"]); //Hashing the old password
                 $_POST['id'] = $_SESSION['id'];
-                $id = $_SESSION['id'];
-                if (select("password", "id")){
-                    $_POST['password'] = $_POST['np'];
-                    update($id, "password");
+                if (select("admins", "password", "id")){
+                    $_POST['password'] = md5($_POST["np"]); //Hashing the new password
+                    update("admins", $_POST['id'], "password");
                     header("Location: ". $BASE_URL . "changePass.php?success=Your password has been changed successfully");
                     exit();
                 }else {

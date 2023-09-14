@@ -1,29 +1,28 @@
 <?php 
     include __DIR__ ."/../env.php";
-    include __DIR__ . $exitPage . $layout . "header.php";
-    include __DIR__ . $exitPage . $fnc . "authFunctions.php";
+    include __DIR__ . $exitPage . $layout . "head.php";
+    include __DIR__ . $exitPage . $user . "authFunctions.php";
     
 ?>
 
     <!-- Import any file css here -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $css;?>authStyle.css?v=1.2.5">
-    <title><?php echo $siteTexts["home"]["title"];?></title>
-
+    <link rel="stylesheet" type="text/css" href="<?php echo $css;?>home.css?v=1.1.2">
+    <link rel="stylesheet" type="text/css" href="<?php echo $css;?>preload.css?v=1.1.0">
 </head>
 <body>
-    <div class="container">
-        <h1>Hello, <?php echo $_SESSION['name']; ?></h1>
-        <form action="<?php signOut();?>" method="post">
-            <button class="authBtn" type="submit" name="signout"><?php echo $siteTexts["home"]["submit"];?></button>
-        </form>
-        <?php include __DIR__ . '/../includes/components/home/about.php';  ?> <!--or '../includes/components/home/contact.php'-->
-        <br>
-        <a class="authBtn" href="changePass.php"><?php echo $siteTexts["home"]["anchor"];?></a>
-        <?php include  __DIR__ . '/../includes/components/home/contact.php';  ?>
-    </div>
+    <?php include __DIR__ . $exitPage . $cmp . "preload.php";?>
+    <?php include __DIR__ . $exitPage . $layout . "header.php";?>
+    <main>
+        <article>
+            <?php include __DIR__ . $exitPage .  $cmp . 'home/section1.php';  ?> <!--or '../includes/components/home/contact.php'-->
+
+            <?php include  __DIR__ . $exitPage . $cmp . 'home/section2.php';  ?>
+        </article>
+    </main>
 </body>
 
 <!-- Import any file js here -->
+<script src="assets/js/script.js"></script>
 
 <?php include __DIR__ . $exitPage . $layout . "footer.php"; ?>
 </html>
