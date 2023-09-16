@@ -38,8 +38,12 @@
                         "libelle" => "Name",
                         "placeholder" => "Your Name"
                     ],
+                    "role" => [
+                        "libelle" => "Role",
+                        "placeholder" => "the Role"
+                    ],
                     "submit" => "Sign Up",
-                    "anchor" => "Already have an account?"
+                    "anchor" => "Back"
                 ]
             ],
             "home" => [
@@ -71,6 +75,12 @@
             ],
             "ingredients" => [                
                 "title" => "MANAGE INGREDIENTS"
+            ],
+            "orders" => [
+                "title" => "MANAGE ORDERS"
+            ],
+            "admins" => [
+                "title" => "MANAGE ADMINS"
             ],
             "msgErr" => [
                 "required"=>  " is required",

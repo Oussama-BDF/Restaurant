@@ -8,15 +8,13 @@
             <ul class="flex">
                 <li><a id="home" class="navbar-link" href="home.php">Home</a></li>
                 <div class="separator"></div>
-                <li><a class="navbar-link" href="#Menus">Menus</a></li>
-                <div class="separator"></div>
                 <li><a class="navbar-link" href="foods.php">Foods</a></li>
                 <div class="separator"></div>
                 <li><a class="navbar-link" href="ingredients.php">Ingredients</a></li>
                 <div class="separator"></div>
-                <li><a class="navbar-link" href="#Orders">Orders</a></li>
+                <li><a class="navbar-link" href="orders.php">Orders</a></li>
                 <div class="separator"></div>
-                <li><a class="navbar-link" href="#Admins">Admins</a></li>
+                <li><a class="navbar-link" href="admins.php">Admins</a></li>
             </ul>
         </nav>
         <form action="<?php signOut();?>" method="post">

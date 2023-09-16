@@ -33,7 +33,7 @@
                 if (select("admins", "email")){
                     $errorMsgs["email"] = $siteTexts["msgErr"]['isTaken'];
                 }else {
-                    if (insert("admins", "email", "password", "name")) {
+                    if (insert("admins", "email", "password", "name", "role")) {
                         header("Location: ". $BASE_URL . "signup.php?success=Your account has been created successfully");
                         exit();
                     }

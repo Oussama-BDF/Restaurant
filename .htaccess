@@ -18,3 +18,9 @@ RewriteRule ^admin/foods\.php$ admin/pages/products/foods.php [L]
 
 # Redirect /MyRestaurant/admin/pages/products/ingredients.php to /MyRestaurant/admin/ingredients.php
 RewriteRule ^admin/ingredients\.php$ admin/pages/products/ingredients.php [L]
+
+# Redirect /MyRestaurant/admin/pages/orders/orders.php to /MyRestaurant/admin/orders.php
+RewriteRule ^admin/orders\.php$ admin/pages/orders/orders.php [L]
+
+# Redirect /MyRestaurant/admin/pages/admins/admins.php to /MyRestaurant/admin/admins.php
+RewriteRule ^admin/admins\.php$ admin/pages/admins/admins.php [L]

@@ -34,6 +34,13 @@
                 <?php echo displayErrMsg($errorMsgs, "email"); ?><br>
 
                 <label class="authLbl">
+                    <?php echo $siteTexts["signup"]["form"]["role"]["libelle"];?>
+                </label>
+                <input class="authInpt role" type="role" name="role" 
+                    placeholder="<?php echo $siteTexts["signup"]["form"]["role"]["placeholder"];?>">
+                <?php echo displayErrMsg($errorMsgs, "role"); ?><br>
+
+                <label class="authLbl">
                     <?php echo $siteTexts["signup"]["form"]["password"]["libelle"];?>
                 </label>
                 <input class="authInpt password" type="password" name="password" 
@@ -50,7 +57,7 @@
                 <button class="authBtn" type="submit">
                     <?php echo $siteTexts["signup"]["form"]["submit"];?>
                 </button>
-                <a href="signin.php" class="authAnchr">
+                <a href="admins.php" class="authAnchr">
                     <?php echo $siteTexts["signup"]["form"]["anchor"];?>
                 </a>
             </form>

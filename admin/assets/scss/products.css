@@ -416,7 +416,28 @@ input[type="checkbox"]{
 }
 
 
+.row.admins{
+    justify-content: center;
+}
 
+/* admin */
+table {
+    color: white;
+    margin: 100px;
+    font-size: 20px;
+}
+
+th, td{
+    padding: 10px;
+    border: var(--border-2);
+    width: 260px;
+}
+
+.showAdmins .smallBtn{
+    position: static;
+    display: inline-block;
+    min-width: 50px;
+}
 
 
 
