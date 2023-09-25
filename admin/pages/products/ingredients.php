@@ -6,7 +6,7 @@
 ?>
 
     <!-- Import any file css here -->
-    <link rel="stylesheet" type="text/css" href="<?php echo $css;?>products.css?v=1.3.19">
+    <link rel="stylesheet" type="text/css" href="<?php echo $css;?>products.css?v=1.3.22">
     <link rel="stylesheet" type="text/css" href="<?php echo $css;?>preload.css?v=1.2.1">
 
 </head>

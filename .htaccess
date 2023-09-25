@@ -24,3 +24,12 @@ RewriteRule ^admin/orders\.php$ admin/pages/orders/orders.php [L]
 
 # Redirect /MyRestaurant/admin/pages/admins/admins.php to /MyRestaurant/admin/admins.php
 RewriteRule ^admin/admins\.php$ admin/pages/admins/admins.php [L]
+
+
+
+
+# Redirect /MyRestaurant/customer/pages/home.php to /MyRestaurant/customer/home.php
+RewriteRule ^customer/home\.php$ customer/pages/home.php [L]
+
+# Redirect /MyRestaurant/customer/pages/products/menu.php to /MyRestaurant/customer/menu.php
+RewriteRule ^customer/menu\.php$ customer/pages/products/menu.php [L]

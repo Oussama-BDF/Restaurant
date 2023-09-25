@@ -1,0 +1,122 @@
+/* ************************************FOOTER********************************** */
+
+footer{
+	/* background-color: #24262b; */
+	background: url(../img/footer-bg.jpg) no-repeat center;
+	background-size: cover;
+ 	padding: 70px 0;
+	height: 57vh;
+}
+footer .container{
+	position: relative;
+	max-width: 1170px;
+	margin:auto;
+	background-color: black;
+	padding: 30px;
+	background-image: url(../img/footer-form-bg.png);
+	overflow: hidden;
+}
+footer .container::before{
+	content: "";
+	position: absolute;
+	background: url(../img/img-pattern.svg) no-repeat;
+	height: 100%;
+	width: 105px;
+	left: -7%;
+	top: 0;
+}
+footer .container::after{
+	content: "";
+	position: absolute;
+	background: url(../img/img-pattern.svg) no-repeat;
+	height: 100%;
+	width: 105px;
+	right: -7%;
+	top: 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+footer ul{
+	list-style: none;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	width: 20%;
+  transition: all 0.5s ease;
+}
+.footer-col h4:hover:before{
+  width: 30%;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover {
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	background-color: rgba(255,255,255,0.2);
+  height: 40px;
+	width: 40px;
+	margin-right: 9px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 100%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+/* Style the copyright text */
+.copyright {
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.copyright p {
+  margin: 0;
+  padding: 5px 0;
+}

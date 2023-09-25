@@ -14,7 +14,7 @@ function showCategories($table, $element){
             echo '<div class="row flex">';
         }
 ?>
-        <div class="category col" style="background-image: url('uploads/<?php echo $row["image"]; ?>')">
+        <div class="category col" style="background-image: url('../uploads/<?php echo $row["image"]; ?>?v=1.1.0')">
             <span class="categoryName"><?php echo $row["name"]; ?></span>
 
             <form class="form" action="" method="post">
@@ -58,7 +58,7 @@ function showProducts($table, $foreignKey){
             }
 ?>
             <div class="prod <?php if($table == "foods") echo "foods"?>" style="background-color: var(--eerie-black-1)">
-                <div class="prodImg <?php if($table == "foods") echo "foodImg"?>"  style="background-image: url('uploads/<?php echo $row["image"]; ?>')">
+                <div class="prodImg <?php if($table == "foods") echo "foodImg"?>"  style="background-image: url('../uploads/<?php echo $row["image"]; ?>?v=1.1.0')">
                     <form action="" method="post">
                         <button class="smallBtn black remove" type="submit" name="">Remove</button>
                         <button class="smallBtn black update" type="submit" name="">Update</button>
@@ -88,7 +88,7 @@ function showProducts($table, $foreignKey){
 function showAddFood(){
     if(isset($_POST["showAddFood"])) :
 ?>
-        <section class="addProd blockOtherElements" style="display: block;">
+        <section class="addProd addfood blockOtherElements" style="display: block;">
             <div class="container flex">
                 <form class="form" action=""  method="post" enctype="multipart/form-data">
                     <h2 class="title">Add Food</h2>
@@ -140,7 +140,7 @@ function showAddFood(){
                                 Image:
                             </label>
                             <div class="Inpt imgInpt">
-                                <div class="imgContainer imgContainer2" id="imgContainer_addProd" style="background-image: url('uploads/food.png?v=1.1.0')"></div><br>
+                                <div class="imgContainer imgContainer2" id="imgContainer_addProd" style="background-image: url('../uploads/food.png?v=1.1.0')"></div><br>
                                 <input class="fileInpt fileInpt2" onchange="displayImage('fileInput_addProd', 'imgContainer_addProd')" id="fileInput_addProd" type="file" name="fileToUpload" data-content="Select An Image">
                             </div>
                         </div>
@@ -263,7 +263,7 @@ function addFood($table){
 function showAddIngredient(){
     if(isset($_POST["showAddIngredient"])) :
 ?>
-        <section class="addProd blockOtherElements" style="display: block;">
+        <section class="addProd addIng blockOtherElements" style="display: block;">
             <div class="container flex">
                 <form class="form" action=""  method="post" enctype="multipart/form-data">
                     <h2 class="title">Add Ingredient</h2>
@@ -277,7 +277,7 @@ function showAddIngredient(){
                         Image:
                     </label>
                     <div class="Inpt imgInpt">
-                        <div class="imgContainer" id="imgContainer_addProd" style="background-image: url('uploads/ingredient.png?v=1.1.0')"></div><br>
+                        <div class="imgContainer" id="imgContainer_addProd" style="background-image: url('../uploads/ingredient.png?v=1.1.0')"></div><br>
                         <input class="fileInpt" onchange="displayImage('fileInput_addProd', 'imgContainer_addProd')" id="fileInput_addProd" type="file" name="fileToUpload" data-content="Select An Image">
                     </div><br>
 
@@ -329,7 +329,7 @@ function rmvCategory($table){
     if(isset($_POST["rmvCatg"])){
         include __DIR__ . "/../database/db_conn.php";
         // displayMsg(["msg" => "Are you sure that you wanna remove this??", "img" => "warning1"]);
-        $filePath = '../../uploads/' . $_POST["hdnImage"];
+        $filePath = '../../../uploads/' . $_POST["hdnImage"];
         if($_POST["hdnImage"] != "category.png"){
             if (file_exists($filePath) && !unlink($filePath)) {
                 $msg["img"] = "warning1";
@@ -364,7 +364,7 @@ function showUpdateCategory(){
                         Image:
                     </label>
                     <div class="Inpt imgInpt">
-                        <div class="imgContainer" id="imgContainer_upd" style="background-image: url('uploads/<?php echo $_POST["hdnImage"]; ?>')"></div><br><br>
+                        <div class="imgContainer" id="imgContainer_upd" style="background-image: url('../uploads/<?php echo $_POST["hdnImage"]; ?>?v=1.1.0')"></div><br><br>
                         <input class="fileInpt" onchange="displayImage('fileInput_upd', 'imgContainer_upd')" id="fileInput_upd" type="file" name="fileToUpload" data-content="New Image?">
                     </div><br>
                     <button class="smallBtn gold" type="submit" name="updCatg">Update Category</button>
@@ -436,7 +436,7 @@ function showAddCategory(){
                 Image:
             </label>
             <div class="Inpt imgInpt">
-                <div class="imgContainer" id="imgContainer_add" style="background-image: url('uploads/category.png?v=1.1.0')"></div><br><br>
+                <div class="imgContainer" id="imgContainer_add" style="background-image: url('../uploads/category.png?v=1.1.0')"></div><br><br>
                 <input class="fileInpt" onchange="displayImage('fileInput_add', 'imgContainer_add')" id="fileInput_add" type="file" name="fileToUpload" data-content="Select An Image">
             </div><br>
 
@@ -486,7 +486,7 @@ function addCategory($table){
 // This return true or false or an error message
 function uploadImg(){
     if($_FILES['fileToUpload']["name"] !== ""){
-        $target_dir = "../../uploads/";
+        $target_dir = "../../../uploads/";
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]); //uploads/myfile.jpg
         // Check if image file is actual an image
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);

@@ -84,6 +84,8 @@ function showIngOption($id){
   }
 }
 
+
+
 // Get the current page URL
 const currentPage = window.location.href;
 
@@ -93,3 +95,48 @@ document.querySelectorAll('nav ul li a').forEach(link => {
         link.classList.add('active');
     }
 });
+
+// Get the current page URL
+const currentPage1 = window.location.href;
+
+// Check if the current page URL matches the link's href attribute
+document.querySelectorAll('showMenu buttons a').forEach(link => {
+    if (currentPage1 === link.href) {
+        link.classList.add('active');
+    }
+});
+
+
+// thanks, i want do the same thing but  now not in the header
+//             <form action="" method="post">
+//                 <button class="categoryBtn" class="text" type="submit">
+//                     <div class="categoryImg" style="background-image: url('uploads/<?php echo $row['image']?>')"></div><?php echo $row['name']?>
+//                 </button>
+//                 <input type="hidden" name="hdnId" value="<?php echo $row['id']?>">
+//             </form>
+// there is 4 of this form
+// i want if the user click on a button, this button change the style
+
+
+
+// // Get all the buttons with the class "categoryBtn"
+// const buttons = document.querySelectorAll('.categoryBtn');
+
+// // Add a click event listener to each button
+// buttons.forEach(button => {
+//     button.addEventListener('click', function(event) {
+//         event.preventDefault(); // Prevent the form submission (if needed)
+
+//         // Remove the "clicked" class from all buttons
+//         buttons.forEach(btn => btn.classList.remove('clicked'));
+
+//         // Add the "clicked" class to the clicked button
+//         this.classList.add('clicked');
+
+//         // Handle any other actions you need when a button is clicked
+//     });
+// });
+
+
+
+

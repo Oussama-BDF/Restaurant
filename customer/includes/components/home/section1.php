@@ -5,12 +5,10 @@
     </div>
     <p class="par1 slider-reveal">Tradational &amp; Hygine</p>
     <h1 class="par2 slider-reveal">
-      Hi, <?php echo $_SESSION['name']; ?><br>
-      Welcome to your dashboard
+      For the love of<br>delicious food
     </h1>
     <p class="par3 slider-reveal">
-      
+      Come with family & feel the joy of mouthwatering food
     </p>
-    <a href="changePass.php" class="btn transparent slider-reveal" data-content="<?php echo $siteTexts["home"]["anchor"];?>"><?php echo $siteTexts["home"]["anchor"];?></a>
   </div>
 </section>

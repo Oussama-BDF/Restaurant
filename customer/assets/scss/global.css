@@ -78,8 +78,8 @@ a{
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    max-width: max-content;
-    padding: 12px 30px;
+    /* max-width: max-content; */
+    padding: 14px 30px;
     border: 2px solid var(--gold-crayola);
     border-radius: var(--radius-1);
     overflow: hidden;
@@ -89,10 +89,10 @@ a{
 .btn::before {
     content: "";
     position: absolute;
-    width: 200%;
+    width: 150%;
     height: 200%;
     bottom: 100%;
-    left: -50%;
+    left: -25%;
     border-radius: 50%;
     transition: 0.5s ease;
 }

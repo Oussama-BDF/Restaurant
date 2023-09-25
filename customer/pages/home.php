@@ -1,8 +1,6 @@
 <?php 
     include __DIR__ ."/../env.php";
-    include __DIR__ . $exitPage . $layout . "head.php";
-    include __DIR__ . $exitPage . $user . "authFunctions.php";
-    
+    include __DIR__ . $exitPage . $layout . "head.php";    
 ?>
 
     <!-- Import any file css here -->
@@ -22,7 +20,7 @@
 </body>
 
 <!-- Import any file js here -->
-<script src="assets/js/script.js?v=1.1.2"></script>
+<script src="assets/js/script.js?v=1.1.10"></script>
 
 <?php include __DIR__ . $exitPage . $layout . "footer.php"; ?>
 </html>
