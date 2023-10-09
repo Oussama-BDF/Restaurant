@@ -5,8 +5,8 @@
 function showCategories($table, $element){
     include __DIR__ . "/../database/db_conn.php";
     $sql = "SELECT * FROM $table";
-    $result = mysqli_query($conn, $sql);
-    for ($i=0; $row = mysqli_fetch_assoc($result) ; $i++) :
+    $stmt = $conn->query($sql);
+    for ($i=0; $row = $stmt->fetch(PDO::FETCH_ASSOC); $i++) :
         if($i % 3 == 0 && $i!=0){
             echo '</div>';
         }
@@ -32,7 +32,10 @@ function showCategories($table, $element){
 <?php
     endfor;
     if($i != 0) echo '</div>';
-    mysqli_close($conn);
+    else{
+        echo "<div class='notYet'>There s no food category yet</div>";
+    }
+    $conn = null;
 }
 
 
@@ -48,8 +51,8 @@ function showProducts($table, $foreignKey){
 <?php
         include __DIR__ . "/../database/db_conn.php";
         $sql = "SELECT * FROM $table WHERE $foreignKey=" . $_POST["hdnId"];
-        $result = mysqli_query($conn, $sql);
-        for ($i=0; $row = mysqli_fetch_assoc($result) ; $i++) :
+        $stmt = $conn->query($sql);
+        for ($i=0; $row = $stmt->fetch(PDO::FETCH_ASSOC) ; $i++) :
             if($i % 3 == 0 && $i!=0){
                 echo '</div>';
             }
@@ -76,7 +79,7 @@ function showProducts($table, $foreignKey){
 <?php
         endfor;
         if($i != 0) echo '</div>';
-        mysqli_close($conn);
+        $conn = null;
 ?>
             </div>
         </section>
@@ -159,9 +162,9 @@ function showAddFood(){
 <?php
     include __DIR__ . "/../database/db_conn.php";
     $sql = "SELECT name, id FROM ing_categ";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->query($sql);
     $i = 1;
-    while($row = mysqli_fetch_assoc($result)) :
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)) :
 ?>
                                 <div class="categoryTest" onclick="showIngOption('containerTest<?php echo $i?>')" style="display: none" id="category<?php echo $i?>">
                                     <span><?php echo $row["name"]?></span><span class="floatRight">▼</span><br>
@@ -169,8 +172,8 @@ function showAddFood(){
                                 <div class="mard"><div id="containerTest<?php echo $i?>" class="containerTest">
 <?php
         $sql2 = "SELECT s.name, s.id FROM ingredients s, ing_categ g WHERE s.ing_categ_id=g.id AND g.id=" . $row["id"];
-        $result2 = mysqli_query($conn, $sql2);
-        while($row2 = mysqli_fetch_assoc($result2)):
+        $stmt2 = $conn->query($sql2);
+        while($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)):
 ?>
                                         <div class="ingredient"><input type="checkbox" name="ingrd<?php echo $row2["id"]?>" value="<?php echo $row2["id"]?>"> <?php echo $row2["name"]?></div>
 <?php                         
@@ -218,10 +221,10 @@ function addFood($table){
         }
         // if everything is ok, try to insert the food into the db
         if (isset($isOk) && $isOk === true) {
-            $query = "INSERT INTO $table (name, description, price, hasIng, element, max, min, image, food_categ_id) VALUES 
+            $sql = "INSERT INTO $table (name, description, price, hasIng, element, max, min, image, food_categ_id) VALUES 
             ('" . $_POST["name"] . "','" . $_POST["description"] . "','" . $_POST["price"] . "','" . $_POST["has_ing"] . "','" . $_POST["element"] . "','" . $_POST["max"] . "','" . $_POST["min"] . "', '$fileName'" . "," . $_POST["hdnId"] . ")";
-            if(mysqli_query($conn, $query)){
-                $last_id = $conn->insert_id;
+            if($conn->query($sql)){
+                $last_id = $conn->lastInsertId();
                 if($_POST["has_ing"] == "1"){
                     $sql2 = "INSERT INTO food_has_ing (foods_id, ingredients_id) VALUES ";
                     $counter = false;
@@ -234,12 +237,12 @@ function addFood($table){
                     }
                     $sql2 .= ";";
                     if($counter){
-                        if (mysqli_query($conn, $sql2)) {
+                        if ($conn->query($sql2)) {
                             $msg["img"] = "validation1";
                             $msg["msg"] = "The Food Uploaded And Inserted Into The Database with ingredients.<br>";                    
                         } else {
                             $msg["img"] = "warning1";
-                            $msg["msg"] = "Error: " . mysqli_error($conn);
+                            // $msg["msg"] = "Error: " . mysqli_error($conn);
                         }
                     }else {
                         $msg["img"] = "validation1";
@@ -251,10 +254,10 @@ function addFood($table){
                 }
             } else {
                 $msg["img"] = "warning1";
-                $msg["msg"] = "Error: " . mysqli_error($conn);
+                // $msg["msg"] = "Error: " . mysqli_error($conn);
             }
         }
-        mysqli_close($conn);
+        $conn = null;
         return $msg;
     }
 }
@@ -310,16 +313,16 @@ function addIngredient($table){
         }
         // if everything is ok, try to insert the category into the db
         if (isset($isOk) && $isOk === true) {
-            $query = "INSERT INTO $table (name, image, ing_categ_id) VALUES ('" . $_POST["name"] . "', '$fileName'," . $_POST["hdnId"] .")";
-            if (mysqli_query($conn, $query)) {
+            $sql = "INSERT INTO $table (name, image, ing_categ_id) VALUES ('" . $_POST["name"] . "', '$fileName'," . $_POST["hdnId"] .")";
+            if ($conn->query($sql)) {
                 $msg["img"] = "validation1";
                 $msg["msg"] = "The Ingredient Uploaded And Inserted Into The Database.<br>";
             } else {
                 $msg["img"] = "warning1";
-                $msg["msg"] = "Error: " . mysqli_error($conn);
+                // $msg["msg"] = "Error: " . mysqli_error($conn);
             }
         }
-        mysqli_close($conn);
+        $conn = null;
         return $msg;
     }
 }
@@ -339,12 +342,12 @@ function rmvCategory($table){
 
         if(!isset($msg)){
             $sql = "DELETE FROM $table WHERE id=" . $_POST["hdnId"];
-            $result = mysqli_query($conn, $sql);
+            $conn->query($sql);
             $msg["img"] = "validation1";
             $msg["msg"] = "Your Category Has Been Removed Successfully";
         }
         return $msg;
-        mysqli_close($conn);
+        $conn = null;
     }
 }
 
@@ -404,18 +407,18 @@ function updateCategory($table){
 
         if($isOk === true && !isset($msg["img"])){
             $sql .= " WHERE id =" . $_POST['hdnId'];
-            if (mysqli_query($conn, $sql)) {
+            if ($conn->query($sql)) {
                 $msg["img"] = "validation1";
                 $msg["msg"] = "The Category Updated Successfully.<br>";
             } else {
                 $msg["img"] = "warning1";
-                $msg["msg"] = "Error: " . mysqli_error($conn);
+                // $msg["msg"] = "Error: " . mysqli_error($conn);
             }
         } else if(!$isOk){
             $msg["img"] = "warning1";
             $msg["msg"] .= "There Is Nothing To Update!!";
         }
-        mysqli_close($conn);
+        $conn = null;
         return $msg;
     }
 }
@@ -468,16 +471,16 @@ function addCategory($table){
         }
         // if everything is ok, try to insert the category into the db
         if (isset($isOk) && $isOk === true) {
-            $query = "INSERT INTO $table (name, image) VALUES ('" . $_POST["name"] . "', '$fileName')";
-            if (mysqli_query($conn, $query)) {
+            $sql = "INSERT INTO $table (name, image) VALUES ('" . $_POST["name"] . "', '$fileName')";
+            if ($conn->query($sql)) {
                 $msg["img"] = "validation1";
                 $msg["msg"] = "The Category Uploaded And Inserted Into The Database.<br>";
             } else {
                 $msg["img"] = "warning1";
-                $msg["msg"] = "Error: " . mysqli_error($conn);
+                // $msg["msg"] = "Error: " . mysqli_error($conn);
             }
         }
-        mysqli_close($conn);
+        $conn = null;
         return $msg;
     }
 }

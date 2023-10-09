@@ -31,5 +31,5 @@
     </script>
 
 
-<?php include __DIR__ . $exitProd . $layout . "footer.php"; ?>
+<?php //include __DIR__ . $exitProd . $layout . "footer.php"; ?>
 </html>

@@ -49,9 +49,9 @@ body{
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover { */
     /* background: #555; */
-}
+/* } */
 
 
 .flex{
@@ -68,6 +68,13 @@ body{
 
 a{
     text-decoration: none;
+}
+
+.notYet{
+    font-weight: bold;
+    color: gray;
+    font-size: 50px;
+    text-align: center;
 }
 
 /* ***********************************************************The Buttons***************************************** */

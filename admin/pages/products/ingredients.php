@@ -29,5 +29,5 @@
 <!-- Import any file js here -->
 <script src="assets/js/script.js"></script>
 
-<?php include __DIR__ . $exitProd . $layout . "footer.php"; ?>
+<?php //include __DIR__ . $exitProd . $layout . "footer.php"; ?>
 </html>

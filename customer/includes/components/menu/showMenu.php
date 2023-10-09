@@ -4,8 +4,8 @@
 <?php
         include __DIR__ . "/../../../backend/database/db_conn.php";
         $sql = "SELECT * FROM food_categ LIMIT 4";
-        $result = mysqli_query($conn, $sql);
-        While($row = mysqli_fetch_assoc($result)){
+        $stmt = $conn->query($sql);
+        While($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 ?>
             <form action="" method="post">
                 <button onclick="this.classList.add('clicked')" class="categoryBtn" class="text" type="submit">
@@ -15,6 +15,7 @@
             </form>
 <?php
         }
+        $conn = null;
 ?>  
         </div>
         <?php showMenu();?>

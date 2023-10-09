@@ -8,8 +8,8 @@
             $sql .= "$field='" . $_POST[$field] . "'";
             if ($field !== $fields[func_num_args() - 2]) $sql .= " AND ";
         endforeach;
-        $result = mysqli_query($conn, $sql);
-        return mysqli_fetch_assoc($result);
+        $stmt = $conn->query($sql);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     function insert($table, ...$fields){
@@ -23,8 +23,8 @@
             else { $insert .= ")";   $values .= ")";}
         endforeach;
         $sql = $insert . $values;
-        $result = mysqli_query($conn, $sql);
-        return $result;
+        $stmt = $conn->query($sql);
+        return $stmt;
     }
 
     function update($table, $id, ...$fields){
@@ -34,5 +34,5 @@
             $sql .= "$field='" . $_POST[$field] . "'";
             $sql .= ($field !== $fields[func_num_args() - 3])? "," : " WHERE id = $id";
         endforeach;
-        $result = mysqli_query($conn, $sql);
+        $stmt = $conn->query($sql);
     }

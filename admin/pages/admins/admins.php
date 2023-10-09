@@ -34,8 +34,8 @@
                             <?php
                                 include __DIR__ . "/../../backend/database/db_conn.php";
                                 $sql = "SELECT * FROM admins";
-                                $result = mysqli_query($conn, $sql);
-                                while($row = mysqli_fetch_assoc($result)){
+                                $stmt = $conn->query($sql);
+                                While($row = $stmt->fetch(PDO::FETCH_ASSOC)){
                                     if($row["role"]!="superAdmin"){
                             ?>
                             <tr>
@@ -57,7 +57,7 @@
                                     $msg["msg"] = "The Admin Has Been Removed Successfully";
                                     showMsg($msg);
                                 }
-                                mysqli_close($conn);
+                                $conn = null;
                             ?>
                         </tbody>
                     </table>
@@ -76,5 +76,5 @@
     </script>
 
 
-<?php include __DIR__ . $exitProd . $layout . "footer.php"; ?>
+<?php //include __DIR__ . $exitProd . $layout . "footer.php"; ?>
 </html>

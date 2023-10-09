@@ -9,8 +9,9 @@ function showMenu(){
         $sql = "SELECT * FROM foods where food_categ_id=(select id from food_categ where name='Burgers')";
     }
 
-    $result = mysqli_query($conn, $sql);
-    for ($i=0; $row = mysqli_fetch_assoc($result) ; $i++) :
+    $stmt = $conn->query($sql);
+    // $result = mysqli_query($conn, $sql);
+    for ($i=0; $row = $stmt->fetch(PDO::FETCH_ASSOC); $i++) :
         if($i % 4 == 0 && $i!=0){
             echo '</div>';
         }
@@ -31,5 +32,5 @@ function showMenu(){
 <?php
     endfor;
     if($i != 0) echo '</div>';
-    mysqli_close($conn);
+    $conn = null;
 }

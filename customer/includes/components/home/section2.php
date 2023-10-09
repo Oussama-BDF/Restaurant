@@ -1,9 +1,9 @@
 <section class="section3" id="Menus">
   <div class="container">
     <p class="par1 slider-reveal">Flavors For Royalty</p>
-    <h2 class="par2">We Provide Access To The database</h2>
+    <h2 class="par2">We provide good services</h2>
     <p class="par3">
-      With this account you can easily add, remove and modify categories, products and sub products from your dashboard
+      You can easily view the menu and make orders
     </p>
     <img src="./assets/img/shape-1.png" class="shape shape-1 move-anim">
     <img src="./assets/img/shape-2.png" class="shape shape-2 move-anim">
